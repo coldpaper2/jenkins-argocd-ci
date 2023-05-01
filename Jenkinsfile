@@ -10,9 +10,9 @@ pipeline {
         withCredentials([usernamePassword( credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER_ID', passwordVariable: 'DOCKER_USER_PASSWORD')])   {
 
         sh '''
-           "docker login --username=${DOCKER_USER_ID} --password=${DOCKER_USER_PASSWORD}"
-           "docker build -t ${DOCKER_UESR_ID}/jenkins-argocd:v1 . "
-           "docker push ${DOCKER_UESR_ID}/jenkins-argocd:v1" 
+           docker login --username=${DOCKER_USER_ID} --password=${DOCKER_USER_PASSWORD}
+           docker build -t ${DOCKER_UESR_ID}/jenkins-argocd:v1 . 
+           docker push ${DOCKER_UESR_ID}/jenkins-argocd:v1 
         '''
       }
 
