@@ -25,6 +25,7 @@ pipeline {
       }
 
     stage('docker build & push') {
+      steps {
       sh '''
            docker build -t ${DOCKER_IMAGE_NAME}:${TAG} .
            docker push ${DOCKER_IMAGE_NAME}/${TAG}
@@ -37,5 +38,7 @@ pipeline {
 
 }
 
+
+}
 
 }
