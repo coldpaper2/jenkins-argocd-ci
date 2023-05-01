@@ -36,8 +36,9 @@ pipeline {
 	 
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
          sed s/nginx:1.17/nginx:1.18/g jenkins-argocd-cd/argo/deploy.yaml
-         git add jenkins-argocd-cd/argo
+         git add .
 	 git commit -m "${DOCKER_IMAGE_NAME}"
+         
          git remote add origin https://github.com/coldpaper2/jenkins-argocd-cd.git
          git push origin main
       '''
