@@ -14,8 +14,9 @@ pipeline {
       }
 
         sh '''
-          "docker build -t mhkim1560:jenkinsargocd:v1 . "
-          "docker push ${DOCKER_USER_ID}:jenkinsargocd:v1 "
+          ls
+          docker build -t mhkim1560:jenkinsargocd:v1 . 
+          docker push ${DOCKER_USER_ID}:jenkinsargocd:v1 
         '''
       }
 
