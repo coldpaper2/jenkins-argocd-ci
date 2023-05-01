@@ -34,11 +34,12 @@ pipeline {
       steps {
       sh '''
 	 
-         git url: 'https://github.com/coldpaper2/jenkins-argocd-cd', branch: 'main'
+         git clone https://github.com/coldpaper2/jenkins-argocd-cd
          cd argo
          sed -i s/nginx:1.17/${DOCKER_IMAGE_NAME}:${TAG} ./deploy.yaml
          git add .
 	 git commit -m "${DOCKER_IMAGE_NAME}"
+         git remote add https://github.com/coldpaper2/jenkins-argocd-cd.git
          git push origin main
       '''
       }
