@@ -17,8 +17,6 @@ pipeline {
 
         sh '''
            docker login --username=${DOCKER_USER_ID} --password=${DOCKER_USER_PASSWORD}
-           docker build -t ${DOCKER_USER_ID}/jenkins-argocd:v1 .  
-           docker push ${DOCKER_UESR_ID}/jenkins-argocd:v1 
         '''
       }
 
