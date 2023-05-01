@@ -35,7 +35,7 @@ pipeline {
       sh '''
 	 
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
-         sed -i s/nginx:1.17/${DOCKER_IMAGE_NAME}:${TAG} jenkins-argocd-cd/argo/deploy.yaml
+         sed -i s/nginx:1.17/${DOCKER_IMAGE_NAME}:${TAG}/g ./jenkins-argocd-cd/argo/deploy.yaml
          git add .
 	 git commit -m "${DOCKER_IMAGE_NAME}"
          git remote add https://github.com/coldpaper2/jenkins-argocd-cd.git
