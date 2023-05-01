@@ -2,10 +2,16 @@ pipeline {
 
   agent any
 
+  environment {
+
+    DOCKER_IMAGE_NAME = "mhkim1560/jenkins-argocd"
+    TAG = "v1"
+
+  }
 
   stages {
 
-    stage('docker build & push') {
+    stage('docker login') {
       steps {
         withCredentials([usernamePassword( credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USER_ID', passwordVariable: 'DOCKER_USER_PASSWORD')])   {
 
@@ -18,14 +24,18 @@ pipeline {
 
       }
 
+    stage('docker build & push') {
+      sh '''
+           docker build -t ${DOCKER_IMAGE_NAME}:${TAG} .
+           docker push ${DOCKER_IMAGE_NAME}/${TAG}
+      '''   
+    }
+
+
     }
 
 
 }
-
-
-
-
 
 
 }
