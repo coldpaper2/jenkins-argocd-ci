@@ -34,7 +34,7 @@ pipeline {
       sh '''
          
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
-	 cd argo
+	 cd jenkins-argocd-cd/argo
 	 git init
          git config user.name coldpaper2
 	 git config user.email a01033910643@gmail.com
