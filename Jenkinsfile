@@ -38,7 +38,7 @@ pipeline {
 	 git init
          git config --global user.name coldpaper2
 	 git config --global user.email a01033910643@gmail.com
-         yq e --inplace '.spec.template.spec.containers[0].image = "${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"' deploy.yaml
+         yq e --inplace '.spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
          cat deploy.yaml
 	 git branch -M main
          git add .
