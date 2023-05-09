@@ -45,8 +45,8 @@ pipeline {
          
          git remote add origin https://github.com/coldpaper2/jenkins-argocd-cd.git
          git push origin main
-	 cd .. 
-	 rm -rf argo
+	 cd ../.. 
+	 rm -rf jenkins-argocd-cd
 				 
       '''
       }
