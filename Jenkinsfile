@@ -35,17 +35,17 @@ pipeline {
          
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
 	 cd jenkins-argocd-cd/argo
-	 git init
+	 #git init
          yq e --inplace '.spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
          cat deploy.yaml
-	 git branch -M main
-         git add .
-         git commit -m "${DOCKER_IMAGE_NAME}"
+	 #git branch -M main
+         #git add .
+         #git commit -m "${DOCKER_IMAGE_NAME}"
          
-         git remote add origin https://github.com/coldpaper2/jenkins-argocd-cd.git
-         git push origin main
-	 cd ../.. 
-	 rm -rf jenkins-argocd-cd
+         #git remote add origin https://github.com/coldpaper2/jenkins-argocd-cd.git
+         #git push origin main
+	 #cd ../.. 
+	 #rm -rf jenkins-argocd-cd
 				 
       '''
       }
