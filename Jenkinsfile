@@ -35,8 +35,9 @@ pipeline {
          
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
 	 cd jenkins-argocd-cd/argo
-	 #git init
-         yq e --inplace '.spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
+	 git init
+         yq e --inplace ".spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
+         
          cat deploy.yaml
 	 #git branch -M main
          #git add .
