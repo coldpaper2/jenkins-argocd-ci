@@ -36,8 +36,8 @@ pipeline {
          git clone https://github.com/coldpaper2/jenkins-argocd-cd
 	 cd jenkins-argocd-cd/argo
 	 git init
-         #git config user.name "coldpaper2"
-	 #git config --global user.email a01033910643@gmail.com
+         git config user.name "coldpaper2"
+	 git config user.email a01033910643@gmail.com
          yq e --inplace '.spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
          cat deploy.yaml
 	 git branch -M main
