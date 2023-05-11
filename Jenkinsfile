@@ -31,6 +31,7 @@ pipeline {
 }
     stage('argocd repository update') {
       steps {
+         sh git init
          git url: 'git@github.com:coldpaper2/jenkins-argocd-cd.git', credentialsId: 'jenkins_key', branch: 'main'
       sh '''
          pwd
