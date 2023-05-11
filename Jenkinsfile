@@ -31,17 +31,19 @@ pipeline {
 }
     stage('argocd repository update') {
       steps {
-         git url: 'git@github.com:coldpaper2/jenkins-argocd-cd.git', credentialsId: 'jenkins_key', branch: 'main'
+         git url: 'git@github.com:coldpaper2/jenkins-argocd-cd.git', credentialsId: 'jenkins-ssh', branch: 'main'
       sh '''
          pwd
          cd argo
          #yq e --inplace ".spec.template.spec.containers[0].image = \"${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}\"" deploy.yaml
          yq e --inplace '.spec.template.spec.containers[0].image = env(DOCKER_IMAGE_NAME) + ":" + env(BUILD_NUMBER)' deploy.yaml
+        #cd jenkins-argocd-cd/argo
          cat deploy.yaml
 	 git branch -M main
          git add .
          git commit -m "${DOCKER_IMAGE_NAME}"
          
+        # git remote add origin https://github.com/coldpaper2/jenkins-argocd-cd.git
          git push origin main
 				 
       '''
@@ -56,3 +58,4 @@ pipeline {
 
 
 }
+
