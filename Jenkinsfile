@@ -42,7 +42,7 @@ pipeline {
          git add .
          git commit -m "${DOCKER_IMAGE_NAME}"
          
-         git push origin2 main
+         git push origin main
 				 
       '''
       }
